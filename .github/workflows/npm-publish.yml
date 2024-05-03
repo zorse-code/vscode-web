@@ -16,6 +16,15 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: clean-gyp
         run: rm -rf ~/.node-gyp ~/.cache/node-gyp
+      - name: linux-dependencies
+        run: apt-get install -y \
+          build-essential \
+          g++ \
+          libx11-dev \
+          libxkbfile-dev \
+          libsecret-1-dev \
+          libkrb5-dev \
+          python-is-python3
       - name: build
         run: yarn build
       - name: publish
